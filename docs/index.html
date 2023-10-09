@@ -22,7 +22,8 @@
 				<h1>Bonnes pratiques de développement logiciel</h1>
 				<p>Paul Tsnobiladzé</p>
 			</section>
-			<section data-markdown data-separator="\r?\n\W*---\W*\r?\n" data-separator-vertical="\r?\n\W*--\W*\r?\n">
+			<section data-markdown data-separator="\r?\n\W*---\W*\r?\n" data-separator-vertical="\r?\n\W*--\W*\r?\n"
+				data-separator-notes="Notes? ?:\W*\n">
 				<textarea data-template>
 
 					## Sommaire
@@ -31,9 +32,88 @@
 					---
 
 					## Objectifs <!-- .slide: id="objectifs"  -->
-					1. Avoir du code correct <!-- .element: class="fragment" -->
-					1. Avoir du code maintenable <!-- .element: class="fragment" -->
+
+					---
+
+					### 1. Écrire du code correct 
+
+					--
 					
+					Le code correspond aux specs et aux tests 
+					
+					- Des specs claires qui se comprennent bien <!-- .element: class="fragment" -->
+					- qui se traduisent facilement en tests <!-- .element: class="fragment" -->
+					- Du code facilement testable <!-- .element: class="fragment" -->
+					- Des revues de code <!-- .element: class="fragment" -->
+
+					--- 
+
+					### 2. Écrire du code maintenable 
+
+					--
+					
+					Du code qui se comprend facilement mais se casse difficilement
+
+					-- 
+
+					Du code compréhensible :
+					
+					- utilisation des concepts les plus simples possibles <!-- .element: class="fragment" -->
+					- noms de variables descriptifs <!-- .element: class="fragment" -->
+					- des commentaires si besoin <!-- .element: class="fragment" -->
+					- des interfaces claires et simples <!-- .element: class="fragment" -->
+					
+					Notes: 
+					KISS, Rule of Least Power
+
+					-- 
+
+					Du code facilement testable
+
+					-- 
+
+					Rendre impossible la représentation d'états incorrects
+
+					Notes: 
+					Parler des systèmes de typage statique
+
+					---
+					
+					### 3. Écrire du code réutilisable 
+
+					--
+					
+					- Du code générique et modulaire <!-- .element: class="fragment" -->
+					- adaptable à des cas d'usages différents <!-- .element: class="fragment" -->
+					- Des modules à l'interface claire <!-- .element: class="fragment" -->
+					- de petite taille <!-- .element: class="fragment" -->
+
+					Notes:
+					Parler de l'importance de dépendre d'une interface et non d'une implémentation
+
+					---
+
+					## Et concrètement, on fait quoi ?
+
+					Notes:
+
+					Les ingénieurs logiciels sont globalement d'accord sur le constat, moins sur la manière de l'appliquer.
+					De manière générale, les développeurs ont souvent des opinions bien tranchées sur plein de sujets, 
+					opinions qui sont souvent contradictoires entre elles.
+					Prendre ce qui suit comme des conseils, pas comme des règles absolues.
+					L'application de ces principes dépend beaucoup de la situation, de la stack technique, du paradigme utilisé, etc.
+
+					Parmi les efforts pour spécifier les bonnes pratiques en programmation orientée objet basée sur les classes,
+					on peut citer les principes regroupés sous l'acronyme SOLID.
+
+					---
+
+					## SOLID
+
+					--
+
+
+
 				</textarea>
 			</section>
 		</div>
