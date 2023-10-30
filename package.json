@@ -1,0 +1,34 @@
+{
+  "name": "swd-best-practices",
+  "version": "1.0.0",
+  "description": "A course about software development best practices",
+  "main": "exercise/Index.bs.mjs",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "res": "rescript build -w",
+    "res:build": "rescript build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsnobip/swd-best-practices.git"
+  },
+  "keywords": [
+    "course",
+    "best",
+    "practices",
+    "functional",
+    "programming"
+  ],
+  "author": "Paul Tsnobiladzé",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tsnobip/swd-best-practices/issues"
+  },
+  "homepage": "https://github.com/tsnobip/swd-best-practices#readme",
+  "dependencies": {
+    "@rescript/core": "^0.5.0",
+    "rescript": "^11.0.0-rc.4"
+  }
+}
