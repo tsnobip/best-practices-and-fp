@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="dist/theme/black.css">
 
 	<!-- Theme used for syntax highlighted code -->
-	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
 </head>
 
 <body>
@@ -120,7 +120,29 @@
 					- **I**nterface segregation principle
 					- **D**ependency inversion principle
 
+					--- 
 
+					some rescript code:
+					```res
+					module CounterMessage = {
+						@react.component
+						let make = (~count, ~username=?) => {
+							let times = switch count {
+							| 1 => "once"
+							| 2 => "twice"
+							| n => Belt.Int.toString(n) ++ " times"
+							}
+					
+							let name = switch username {
+							| Some("") => "Anonymous"
+							| Some(name) => name
+							| None => "Anonymous"
+							}
+					
+							<div> {React.string(`Hello ${name}, you clicked me ` ++ times)} </div>
+						}
+					}
+					```
 				</textarea>
 			</section>
 		</div>
@@ -134,12 +156,39 @@
 		// More info about initialization & config:
 		// - https://revealjs.com/initialization/
 		// - https://revealjs.com/config/
+		var hljs;
+		var hljsConfigured;
 		Reveal.initialize({
 			hash: true,
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
-		});
+			highlight: {
+				highlightOnLoad: false,
+				beforeHighlight: (hl, plugin) => {
+					hljs = hl;
+					var script = document.createElement('script');
+					script.type = 'text/javascript';
+					script.async = false;
+					script.onload = function () {
+						hljs.configure({ languages: ["rescript"] });
+					};
+					script.src = "plugin/highlight/rescript.min.js";
+					document.body.appendChild(script);
+					hljsConfigured = new Promise(resolve => {
+						script.onload = function () {
+							resolve();
+						};
+					});
+				}
+			},
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+		}).then(() => hljsConfigured)
+			.then(() => {
+				// Run the plugin's highlighting code that was skipped on load
+				Array.from(Reveal.getRevealElement().querySelectorAll('pre code')).forEach((block) => {
+					RevealHighlight().highlightBlock(block);
+				});
+			});
 	</script>
 </body>
 
