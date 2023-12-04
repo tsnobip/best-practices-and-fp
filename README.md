@@ -1,11 +1,13 @@
-# Bonnes pratiques de développement logiciel
+# Programmations fonctionnelle et bonnes pratiques de développement logiciel
 
-Ce dépôt contient les sources de mon cours sur les bonnes pratiques de développement logiciel
-destiné aux élèves de l'École des Mines de Saint-Étienne.
+Ce dépôt contient les sources de mon cours d'introduction à la programmation fonctionnelle et sur comment
+celle-ci peut faciliter le suivi des bonnes pratiques de développement logiciel.
+
+Ce cours est originellement destiné aux élèves de l'École des Mines de Saint-Étienne.
 
 ## Consultation
 
-Le cours est accessible en ligne [ici](https://tsnobip.github.io/swd-best-practices/).
+Le cours est accessible en ligne [ici](https://tsnobip.github.io/best-practices-and-fp/).
 
 ## Contribution
 

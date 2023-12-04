@@ -1,5 +1,5 @@
 {
-  "name": "swd-best-practices",
+  "name": "best-practices-and-fp",
   "version": "1.0.0",
   "description": "A course about software development best practices",
   "main": "exercise/Index.bs.mjs",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tsnobip/swd-best-practices.git"
+    "url": "git+https://github.com/tsnobip/best-practices-and-fp.git"
   },
   "keywords": [
     "course",
@@ -24,9 +24,9 @@
   "author": "Paul Tsnobiladzé",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tsnobip/swd-best-practices/issues"
+    "url": "https://github.com/tsnobip/best-practices-and-fp/issues"
   },
-  "homepage": "https://github.com/tsnobip/swd-best-practices#readme",
+  "homepage": "https://github.com/tsnobip/best-practices-and-fp#readme",
   "dependencies": {
     "@rescript/core": "^0.5.0",
     "rescript": "^11.0.0-rc.4"
