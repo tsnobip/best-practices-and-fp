@@ -257,6 +257,77 @@
 
 					→ du code facilement compréhensible et réutilisable <!-- .element: class="fragment" -->
 
+					--
+					
+					### Module
+
+					1. un type principal <!-- .element: class="fragment" -->
+					1. des fonctions qui opèrent sur ce type <!-- .element: class="fragment" -->
+					1. une interface claire <!-- .element: class="fragment" -->
+
+					--
+
+					### Exemple
+
+					```res []
+					module Array : {
+						type t<'a>
+						/**
+							`map(array, fn)` returns a new array with all 
+							elements from `array`, each element transformed 
+							using the provided `fn`.
+						*/
+						let map: (t<'a>, 'a => 'b) => t<'b>
+						/**
+							`keepSome(array)` returns a new array where each 
+							`None` element is discarded and each `Some(value)` 
+							element is replaced with `value`
+						*/
+						let keepSome: t<option<'a>> => t<'a>
+					} 
+					```
+					_
+
+					--
+
+					```res []
+					module UUID: {
+						type t
+						/**
+							`toString(uuid)` serializes a UUID to a string
+						*/
+						let toString: t => string
+						/**
+							`fromString(s)` parses a string and returns
+								`Some(uuid)` if the string is a valid UUID
+								or `None` otherwise
+						*/
+						let fromString: string => option<t>
+					}
+					```
+					_
+					
+					--
+
+					```res []
+					let array = [
+						"47500424-0323-45d6-9531-181f328ab8a4",
+						"invalid-uuid",
+						"8adaefc6-1ed6-4a52-95d7-085a3c3548e9",
+						"2d019c1b-2a8a-4621-95a8-f10069e3577f",
+					]
+
+					let validUUIDs =
+						array
+						->Array.map(UUID.fromString)
+						->Array.keepSome
+
+					Console.log(`UUID count: 
+						${validUUIDs->Array.length->Int.toString}`)
+					// outputs `UUID count: 3`
+					```
+					_
+
 					---
 
 					### 3. Typage statique
@@ -265,6 +336,29 @@
 					- accompagne en cas d'évolution des types <!-- .element: class="fragment" -->
 
 					→ du code qui se casse difficilement <!-- .element: class="fragment" -->
+
+					-- 
+
+					### Exemple
+
+					```res []
+					module Person = {
+						type t =
+							| Teacher({name: string, field: string})
+							| Student({name: string, grade: int})
+							| Researcher({name: string, thesisTopic: string})
+						let toString = person =>
+							switch person {
+							| Teacher({name, field}) => 
+								`${name} teaches ${field}`
+							| Student({name, grade}) =>
+								`${name} is a student in year ${i(grade)}`
+							}
+						// warning: You forgot to handle a possible case
+						//    here, for example: Researcher(_)
+					}
+					```
+					_
 
 					---
 
