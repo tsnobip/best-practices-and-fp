@@ -154,13 +154,13 @@
 						y => x + y
 					}					
 					```
-					_ 
+					<!-- end of code -->
 
 					--
 
 					### Fonctions pures
 
-					- pas d'effets de bord <!-- .element: class="fragment" -->
+					- pas d'effets de bord (pas de modification d'état en dehors de son environnement local) <!-- .element: class="fragment" -->
 					- appel de fonction remplaçable par son résultat (transparence référentielle) <!-- .element: class="fragment" -->
 					- thread safe <!-- .element: class="fragment" -->
 				  
@@ -174,17 +174,30 @@
 					--
 
 					### Exemple
+
+					#### Ne pas faire ceci
 					```res [] 
-					let factorial = n => {
-						let res = 1
-						for i in 1 to n {
-							res = res * i
-							//  ^ ceci est une erreur de syntaxe !
-						}
-						res
-					}				
+					type person = {name: string, age: int}
+
+					// ceci n'est pas possible
+					let incrementAge = person => {
+						person.age = person.age + 1
+						// Error! The record field age is not mutable
+						person
+					}
 					```
-					_
+					<!-- end of code -->
+					
+					-- 
+
+					#### Faire cela à la place
+					```res []
+					type person = {name: string, age: int}
+
+					let incrementAge = person => 
+						{...person, age: person.age + 1}
+					```
+					<!-- end of code -->
 
 					--
 
@@ -199,7 +212,7 @@
 						}
 					}								
 					```
-					_
+					<!-- end of code -->
 
 					--
 
@@ -225,7 +238,8 @@
 						| Node({r}) => findval(r, k)
 						}
 					```
-					_
+					<!-- end of code -->
+					
 					--
 
 					### Autres caractéristiques
@@ -286,7 +300,7 @@
 						let keepSome: t<option<'a>> => t<'a>
 					} 
 					```
-					_
+					<!-- end of code -->
 
 					--
 
@@ -305,7 +319,7 @@
 						let fromString: string => option<t>
 					}
 					```
-					_
+					<!-- end of code -->
 					
 					--
 
@@ -326,7 +340,7 @@
 						${validUUIDs->Array.length->Int.toString}`)
 					// outputs `UUID count: 3`
 					```
-					_
+					<!-- end of code -->
 
 					---
 
@@ -358,7 +372,7 @@
 						//    here, for example: Researcher(_)
 					}
 					```
-					_
+					<!-- end of code -->
 
 					---
 
