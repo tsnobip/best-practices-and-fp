@@ -278,6 +278,22 @@
 
 					→ du code facilement compréhensible et testable <!-- .element: class="fragment" -->
 
+					-- 
+
+					#### Exemple de bugs liés à la mutabilité
+
+					Les paramètres par défaut mutables en Python :
+					```python 
+					def append_to(element, list=[]):
+						list.append(element)
+						return list
+
+					print(append_to(0))
+					// [0]
+					print(append_to(1))
+					// ?
+					```
+					<!-- end of code -->
 					---
 
 					### 2. Fonctions et modules
