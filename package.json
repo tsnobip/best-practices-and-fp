@@ -8,7 +8,8 @@
   },
   "scripts": {
     "res": "rescript build -w",
-    "res:build": "rescript build"
+    "res:build": "rescript build",
+    "exec": "rescript build && node exercise/Index.res.cjs"
   },
   "repository": {
     "type": "git",

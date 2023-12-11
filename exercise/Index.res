@@ -1,1 +1,2 @@
-Console.log("hello world")
+Console.log("Bienvenue dans votre agenda personnalisé !")
+Console.log("")

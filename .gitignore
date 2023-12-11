@@ -2,3 +2,5 @@
 node_modules
 lib/bs
 *.res.mjs
+*.res.cjs
+*.res.js

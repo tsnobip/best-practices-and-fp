@@ -8,11 +8,11 @@
   ],
   "package-specs": [
     {
-      "module": "es6",
+      "module": "commonjs",
       "in-source": true
     }
   ],
-  "suffix": ".res.mjs",
+  "suffix": ".res.cjs",
   "bs-dependencies": ["@rescript/core"],
   "bsc-flags": ["-open RescriptCore"]
 }
