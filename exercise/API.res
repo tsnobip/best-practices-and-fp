@@ -1,3 +1,6 @@
+// INTERNAL
+// DO NOT MODIFY THIS FILE
+
 module Location = {
   type t = {
     latitude: float,
@@ -30,6 +33,43 @@ module Location = {
   let getCurrentLocation = () => {latitude: 45.417303336312735, longitude: 4.413601653972717}
 }
 
+module Movie = {
+  module Actor = {
+    type t = {name: string}
+  }
+  module Director = {
+    type t = {name: string}
+  }
+
+  type t = {
+    title: string,
+    director: Director.t,
+    actors: array<Actor.t>,
+  }
+
+  let getInfo = (~title) => {
+    title,
+    director: {name: "Jérémie Périn"},
+    actors: [{name: "Léa Drucker"}, {name: "Daniel Njo Lobé"}],
+  }
+}
+
+module Play = {
+  module Playwright = {
+    type t = {name: string}
+  }
+
+  type t = {
+    title: string,
+    playwright: Playwright.t,
+  }
+
+  let getInfo = (~title) => {
+    title,
+    playwright: {name: "Eugène Ionesco"},
+  }
+}
+
 module Weather = {
   type condition = Clear | Cloudy | Snowy | Rainy | Windy
   type t = {
@@ -48,15 +88,24 @@ module Weather = {
     }
 }
 
-module Recommandations = {
-  let concert = (~artists as _, ~venue as _, ~weather as _) => failwith("not implemented")
+module Affinity = {
+  type t = float
+  let toString = affinity => `${(affinity *. 100.0)->Float.toFixed}%`
+  let concert = (~artists, ~venue, ~weather) => {
+    switch (venue, weather.Weather.condition, artists) {
+    | ("Les guinguettes de Couriot", Windy | Rainy | Snowy, _) => 0.2
+    | (_, _, ["Laurent Garnier"]) => 0.92
+    | (_, _, ["Tame Impala", "Moodoïd"]) => 0.88
+    | (_, _, ["The Weeknd", "Sabrina Claudio"]) => 0.85
+    | _ => 0.5
+    }
+  }
 
-  let movie = (~director as _, ~actors as _) => failwith("not implemented")
+  let movie = _movie => 0.83
 
-  let play = (~playwright as _, ~director as _, ~actors as _) => failwith("not implemented")
+  let play = (~playwright as _, ~director as _, ~actors as _) => 0.78
 
-  let studentParty = (~artists as _, ~venue as _, ~weather as _, ~affiliatedUniversity as _) =>
-    failwith("not implemented")
+  let studentParty = (~artists as _, ~venue as _, ~weather as _, ~affiliatedUniversity as _) => 0.77
 }
 
 module Event = {
@@ -64,7 +113,7 @@ module Event = {
     id: int,
     name: string,
     kind: string,
-    startDate: RescriptCore.Date.t,
+    startDate: Date.t,
     price: float,
     venue: string,
     location: Location.t,
@@ -93,7 +142,7 @@ module Event = {
       location: {latitude: 45.43890888024989, longitude: 4.377059586541549},
       startDate: Date.fromString("2024-12-13T18:30:00.000Z"),
       artists: ["The Weeknd", "Sabrina Claudio"],
-      price: 55.0,
+      price: 40.0,
     },
     {
       id: 21,
@@ -122,6 +171,16 @@ module Event = {
       startDate: Date.fromString("2024-12-14T18:45:00.000Z"),
       affiliatedUniversitiy: "École nationale supérieure d'architecture de Saint-Etienne",
       price: 5.0,
+    },
+    {
+      id: 32,
+      name: "Laurent Garnier au Sucre",
+      venue: "Le Sucre",
+      kind: "concert",
+      location: {latitude: 45.737381128398894, longitude: 4.814962038622825},
+      startDate: Date.fromString("2024-12-14T22:30:00.000Z"),
+      price: 15.0,
+      artists: ["Laurent Garnier"],
     },
   ]
 }

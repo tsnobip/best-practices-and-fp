@@ -66,7 +66,41 @@ module Event: {
      */
     affiliatedUniversitiy?: string,
   }
+
+  /**
+    * returns the events that'll take place in the next few days
+   */
   let nextEvents: unit => array<t>
+}
+
+module Movie: {
+  module Actor: {
+    type t
+  }
+  module Director: {
+    type t
+  }
+
+  type t = {
+    title: string,
+    director: Director.t,
+    actors: array<Actor.t>,
+  }
+
+  let getInfo: (~title: string) => t
+}
+
+module Play: {
+  module Playwright: {
+    type t
+  }
+
+  type t = {
+    title: string,
+    playwright: Playwright.t,
+  }
+
+  let getInfo: (~title: string) => t
 }
 
 module Weather: {
@@ -79,26 +113,31 @@ module Weather: {
   let getForecast: (Location.t, Date.t) => t
 }
 
-module Recommandations: {
+module Affinity: {
+  type t
   /**
-    * returns a score between 0 and 1 for a given concert
+   * returns a string representation of the affinity score
    */
-  let concert: (~artists: array<string>, ~venue: string, ~weather: Weather.t) => float
+  let toString: t => string
   /**
-    * returns a score between 0 and 1 for a given movie
+    * returns an affinity score between 0 and 1 for a given concert
    */
-  let movie: (~director: string, ~actors: array<string>) => float
+  let concert: (~artists: array<string>, ~venue: string, ~weather: Weather.t) => t
   /**
-    * returns a score between 0 and 1 for a given play
+    * returns an affinity score between 0 and 1 for a given movie
    */
-  let play: (~playwright: string, ~director: string, ~actors: array<string>) => float
+  let movie: Movie.t => t
   /**
-    * returns a score between 0 and 1 for a given student party
+    * returns an affinity score between 0 and 1 for a given play
+   */
+  let play: (~playwright: Play.Playwright.t, ~director: string, ~actors: array<string>) => t
+  /**
+    * returns an affinity score between 0 and 1 for a given student party
    */
   let studentParty: (
     ~artists: array<string>,
     ~venue: string,
     ~weather: Weather.t,
     ~affiliatedUniversity: string,
-  ) => float
+  ) => t
 }

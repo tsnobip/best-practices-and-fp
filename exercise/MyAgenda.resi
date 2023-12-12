@@ -20,6 +20,10 @@ module Event: {
       * The price (in euros) of the event (per person)
      */
     price: float,
+    /**
+      * The affinity score of the event
+     */
+    affinity: API.Affinity.t,
   }
 }
 
