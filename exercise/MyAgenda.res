@@ -69,14 +69,20 @@ let oneRecommendationEveryDay = (~maxDistanceInKm, ~maxPrice) => {
         };
         API.Affinity.studentParty(~artists=artists, ~venue=event.venue, ~weather=API.Weather.getForecast(event.location, event.startDate), ~affiliatedUniversity=affiliatedUniversity)
       }
-      | _ => 0.5
+      | _ => {
+        let artists = switch (event.artists) {
+        | Some(artistList) => artistList
+        | None => []
+        };
+        API.Affinity.concert(~artists=artists, ~venue=event.venue, ~weather=API.Weather.getForecast(event.location, event.startDate))
+      }
       // Sets the event type as desired
       {
         name: event.name,
         startDate: event.startDate,
         venue: event.venue,
         price: event.price,
-        affinity: event.affinity,
+        affinity: affinity,
       }
       }
     }
