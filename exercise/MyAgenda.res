@@ -42,3 +42,4 @@ let oneRecommendationEveryDay = (~maxDistanceInKm, ~maxPrice) => {
   |> List.sort((affinity1, affinity2) => Int.compare(affinity2, affinity1))
   // Return the event with the highest affinity
   |> List.head
+}
