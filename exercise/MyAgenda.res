@@ -13,7 +13,7 @@ let oneRecommendationEveryDay = (~maxDistanceInKm, ~maxPrice) => {
   // utiliser la fonction API.Event.nextEvents pour récupérer les événements
   // puis les autres fonctions du module API pour obtenir les informations manquantes
 
-
+  
   // Get user current location and date
   let userLocation = API.Location.getCurrentLocation();
   let currentDate = Date.now();
