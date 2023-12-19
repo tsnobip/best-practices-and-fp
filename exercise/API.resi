@@ -115,6 +115,7 @@ module Weather: {
 
 module Affinity: {
   type t
+  let compare: (t, t) => Ordering.t
   /**
    * returns a string representation of the affinity score
    */

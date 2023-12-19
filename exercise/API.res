@@ -90,6 +90,7 @@ module Weather = {
 
 module Affinity = {
   type t = float
+  let compare = Float.compare
   let toString = affinity => `${(affinity *. 100.0)->Float.toFixed}%`
   let concert = (~artists, ~venue, ~weather) => {
     switch (venue, weather.Weather.condition, artists) {
