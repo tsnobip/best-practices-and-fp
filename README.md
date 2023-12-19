@@ -43,7 +43,7 @@ git clone [remplacez-ceci-avec-l'adresse-de-votre-fork]
 Une fois cela fait, ouvrez le dépôt avec vscode, ouvrez un terminal dans la barre du bas et installez les dépendances:
 
 ```
-npm run install
+npm install
 ```
 
 Installez les plugins recommandés.
