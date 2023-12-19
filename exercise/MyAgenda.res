@@ -16,7 +16,7 @@ let oneRecommendationEveryDay = (~maxDistanceInKm, ~maxPrice) => {
   
   // Get user current location and date
   let userLocation = API.Location.getCurrentLocation();
-  let currentDate = Date.now();
+  let _currentDate = Date.now();
   // Get the list of nexr events
   let events = API.Event.nextEvents();
   // Filter the events based on the max distance and max price
@@ -30,7 +30,7 @@ let oneRecommendationEveryDay = (~maxDistanceInKm, ~maxPrice) => {
     },
   );
   // Return the events as intended type
-  let returnedEvents = Belt.Array.keep(
+  Belt.Array.map(
     filteredEvents,
     event => {
       // Calculate the affinity depending on the event
@@ -76,14 +76,14 @@ let oneRecommendationEveryDay = (~maxDistanceInKm, ~maxPrice) => {
         };
         API.Affinity.concert(~artists=artists, ~venue=event.venue, ~weather=API.Weather.getForecast(event.location, event.startDate))
       }
+      }
       // Sets the event type as desired
       {
-        name: event.name,
+        Event.name: event.name,
         startDate: event.startDate,
         venue: event.venue,
         price: event.price,
         affinity: affinity,
-      }
       }
     }
   )
