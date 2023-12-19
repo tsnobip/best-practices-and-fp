@@ -1,6 +1,6 @@
 Console.log("Bienvenue dans votre agenda personnalisé !")
 MyAgenda.oneRecommendationEveryDay(~maxDistanceInKm=5.0, ~maxPrice=40.0)->Array.forEach(({
-  API.Event.startDate: startDate,
+  MyAgenda.Event.startDate: startDate,
   name,
   price,
   venue,

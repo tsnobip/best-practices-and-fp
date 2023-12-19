@@ -30,4 +30,4 @@ module Event: {
 /**
  * Returns the top recommended event of each of the next few days
  */
-let oneRecommendationEveryDay: (~maxDistanceInKm: float, ~maxPrice: float) => array<API.Event.t>
+let oneRecommendationEveryDay: (~maxDistanceInKm: float, ~maxPrice: float) => array<Event.t>
